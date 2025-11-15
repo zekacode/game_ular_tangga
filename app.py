@@ -4,7 +4,7 @@
 
 import random
 import string
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 
 app = Flask(__name__)
 
@@ -139,6 +139,20 @@ def roll_dice():
 
 # ============================================================================================================
 # ... (if __name__ == '__main__':) ...
+
+# Route untuk Halaman Utama (Lobby)
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+# Route untuk Halaman Permainan
+@app.route('/game/<room_code>')
+def game_view(room_code):
+    # Kita cek dulu apakah room-nya ada, untuk mencegah error
+    if room_code in game_rooms:
+        return render_template('game_view.html', room_code=room_code)
+    else:
+        return "Room tidak ditemukan!", 404
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

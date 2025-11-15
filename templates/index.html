@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ular Tangga Bahasa Arab - Lobby</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container lobby">
+        <h1>Ular Tangga Edukasi</h1>
+        <div class="form-container">
+            <!-- Form untuk Guru -->
+            <div class="card">
+                <h2>Buat Game Baru (Untuk Guru)</h2>
+                <form id="create-form">
+                    <label for="player_count">Jumlah Pemain:</label>
+                    <select id="player_count" name="player_count">
+                        <option value="2">2 Pemain</option>
+                        <option value="3">3 Pemain</option>
+                        <option value="4">4 Pemain</option>
+                    </select>
+                    <button type="submit">Buat Room</button>
+                </form>
+            </div>
+
+            <!-- Form untuk Murid -->
+            <div class="card">
+                <h2>Gabung ke Game (Untuk Murid)</h2>
+                <form id="join-form">
+                    <label for="room_code">Masukkan Kode Room:</label>
+                    <input type="text" id="room_code" name="room_code" maxlength="4" required>
+                    <button type="submit">Gabung</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kita akan tambahkan JavaScript di sini nanti -->
+    <script src="{{ url_for('static', filename='js/lobby.js') }}"></script>
+</body>
+</html>

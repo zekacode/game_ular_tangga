@@ -1,0 +1,134 @@
+/* General Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Lobby Styling (index.html) */
+.lobby {
+    text-align: center;
+}
+.form-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 300px;
+}
+.card h2 {
+    margin-top: 0;
+}
+.card input, .card select, .card button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+.card button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+.card button:hover {
+    background-color: #0056b3;
+}
+
+/* Game View Styling (game_view.html) */
+.game-container {
+    display: flex;
+    gap: 30px;
+}
+
+.board-wrapper {
+    flex-grow: 1;
+}
+
+#game-board {
+    width: 700px; /* Ukuran papan bisa disesuaikan */
+    height: 700px;
+    background-image: url('../images/papan.png'); /* PASTIKAN NAMA FILE SESUAI */
+    background-size: cover;
+    position: relative; /* Penting untuk menempatkan pion */
+    border: 5px solid #8b4513;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.pion {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute; /* Kunci untuk pergerakan */
+    transition: all 0.5s ease-in-out; /* Animasi pergerakan */
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.panel {
+    width: 350px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+#murid-controls button, .button-group button {
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+#roll-dice-btn {
+    background-color: #28a745;
+}
+.btn-correct { background-color: #28a745; }
+.btn-incorrect { background-color: #dc3545; }
+
+/* Modal Styling */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}

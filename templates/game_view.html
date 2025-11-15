@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bermain Ular Tangga</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container game-container">
+        <!-- Kolom Kiri: Papan Permainan -->
+        <div class="board-wrapper">
+            <div id="game-board">
+                <!-- Pion akan ditambahkan di sini oleh JavaScript -->
+            </div>
+        </div>
+
+        <!-- Kolom Kanan: Panel Info dan Kontrol -->
+        <div class="panel">
+            <h1>Ular Tangga Bahasa Arab</h1>
+            <p>Kode Room: <strong id="room-code-display">...</strong></p>
+            <hr>
+            <div id="info-panel">
+                <h2 id="turn-info">Giliran: Pemain 1</h2>
+                <p id="dice-info">Lemparkan dadu untuk memulai!</p>
+            </div>
+            <hr>
+
+            <!-- Kontrol untuk Murid -->
+            <div id="murid-controls">
+                <h3>Giliranmu!</h3>
+                <button id="roll-dice-btn">Lemparkan Dadu</button>
+            </div>
+
+            <!-- Kontrol untuk Guru (awalnya disembunyikan) -->
+            <div id="guru-controls" class="hidden">
+                <h3>Verifikasi Jawaban Murid</h3>
+                <div class="button-group">
+                    <button id="btn-correct" class="btn-correct">BENAR</button>
+                    <button id="btn-incorrect" class="btn-incorrect">SALAH</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal/Pop-up untuk Soal (awalnya disembunyikan) -->
+    <div id="question-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h2>Pertanyaan!</h2>
+            <p id="question-text">Apa bahasa Arab dari 'buku'?</p>
+            <p><strong>Jawaban:</strong> <span id="answer-text">Kitabun</span></p>
+            <small>Guru, silakan verifikasi jawaban murid.</small>
+        </div>
+    </div>
+    
+    <!-- Script akan kita tambahkan di fase selanjutnya -->
+</body>
+</html>
