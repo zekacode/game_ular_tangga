@@ -49,7 +49,8 @@ def handle_create_room(data):
         'current_turn': 0,
         'game_state': 'waiting', # waiting -> playing -> question -> finished
         'winner': None,
-        'pending_move': None # Untuk menyimpan info pergerakan saat menunggu jawaban
+        'pending_move': None, # Untuk menyimpan info pergerakan saat menunggu jawaban
+        'last_dice_roll': None
     }
     join_room(room_code)
     print(f"Room {room_code} dibuat.")
@@ -71,7 +72,7 @@ def handle_roll_dice(data):
     if room_code not in game_rooms: return
 
     game = game_rooms[room_code]
-    if game['game_state'] == 'question': return # Jangan lakukan apa-apa jika sedang ada pertanyaan
+    if game['game_state'] == 'question': return
 
     if game['game_state'] == 'waiting':
         game['game_state'] = 'playing'
@@ -80,18 +81,27 @@ def handle_roll_dice(data):
     player = game['players'][player_index]
     dice_roll = random.randint(1, 6)
     
-    # Pindahkan pion ke posisi sementara
+    game['last_dice_roll'] = dice_roll
+
     temp_position = player['position'] + dice_roll
     if temp_position > WINNING_POSITION:
         temp_position = player['position']
     
     player['position'] = temp_position
+
+    move_type = None
+    if temp_position in ladders or temp_position in snakes:
+        # Tambahkan flag SEMENTARA sebelum mengirim update
+        game['move_will_be_interrupted'] = True
     
     # Kirim update awal bahwa pion sedang bergerak
     emit('game_update', game, to=room_code)
 
-    # Logika baru: Cek apakah perlu ada pertanyaan
-    move_type = None
+    # Hapus flag setelah dikirim agar tidak tersimpan di state
+    if 'move_will_be_interrupted' in game:
+        del game['move_will_be_interrupted']
+
+    # Cek apakah perlu ada pertanyaan (logika ini tetap sama)
     final_position_if_correct = temp_position
     final_position_if_incorrect = temp_position
 
@@ -103,33 +113,28 @@ def handle_roll_dice(data):
         final_position_if_incorrect = snakes[temp_position]
 
     if move_type:
-        # Berhenti! Munculkan pertanyaan.
+        # Berhenti! Munculkan pertanyaan. (logika ini tetap sama)
         game['game_state'] = 'question'
         question_data = get_random_question()
-        
-        # Simpan info pergerakan yang tertunda
         game['pending_move'] = {
             'player_id': player['id'],
             'correct_pos': final_position_if_correct,
             'incorrect_pos': final_position_if_incorrect
         }
-
-        # Kirim event 'show_question' ke semua client di room
         emit('show_question', {
             'question': question_data['pertanyaan'],
             'answer': question_data['jawaban'],
             'move_type': move_type
         }, to=room_code)
     else:
-        # Jika tidak ada soal, langsung ganti giliran
+        # Jika tidak ada soal, langsung ganti giliran (logika ini tetap sama)
         if temp_position == WINNING_POSITION:
             game['game_state'] = 'finished'
             game['winner'] = player['id']
         else:
             game['current_turn'] = (player_index + 1) % game['player_count']
         
-        # Kirim update final untuk giliran ini
-        socketio.sleep(1) # Beri jeda 1 detik agar animasi pergerakan terlihat
+        socketio.sleep(1)
         emit('game_update', game, to=room_code)
 
 @socketio.on('submit_verdict')

@@ -44,10 +44,21 @@ const btnIncorrect = document.getElementById('btn-incorrect');
 const questionModal = document.getElementById('question-modal');
 const questionText = document.getElementById('question-text');
 const answerText = document.getElementById('answer-text');
+const diceImg = document.getElementById('dice-img');
 
 // --- State Lokal ---
 let myRole = sessionStorage.getItem('role');
 let roomCode = sessionStorage.getItem('room_code');
+let animationInterval;
+
+function animateDice() {
+    clearInterval(animationInterval);
+    animationInterval = setInterval(() => {
+        const randomFace = Math.floor(Math.random() * 6) + 1;
+        // Ganti nama file sesuai dengan nama file gambar dadu Anda
+        diceImg.src = `/static/images/dice/dice (${randomFace}).png`; 
+    }, 200);
+}
 
 // --- Fungsi Utama untuk Merender Game ---
 function renderGameState(state) {
@@ -57,7 +68,6 @@ function renderGameState(state) {
     
     roomCodeDisplay.textContent = roomCode;
     turnInfo.textContent = `Giliran: ${state.players[state.current_turn].name}`;
-    // PERBAIKAN: Bersihkan info dadu setelah pertanyaan dijawab
     diceInfo.textContent = `Total Pemain: ${state.player_count}`;
     
     state.players.forEach(player => {
@@ -76,6 +86,12 @@ function renderGameState(state) {
             pionElement.style.top = `${coords.y}px`;
         }
     });
+
+    // Logika Dadu: Hentikan animasi dan tampilkan hasil
+    clearInterval(animationInterval);
+    if (state.last_dice_roll) {
+        diceImg.src = `/static/images/dice/dice (${state.last_dice_roll}).png`;
+    }
 
     const isPlayable = state.game_state === 'playing' || state.game_state === 'waiting';
     
@@ -98,6 +114,8 @@ function renderGameState(state) {
 
 // --- Event Listeners untuk Interaksi Pengguna ---
 rollDiceBtn.addEventListener('click', () => {
+    // Hanya ada SATU event listener sekarang
+    animateDice(); // Mulai animasi
     socket.emit('roll_dice', { room_code: roomCode });
 });
 
@@ -122,23 +140,29 @@ window.onload = () => {
     socket.emit('join_room', { room_code: roomCode });
 
     // --- Mendengarkan Event dari Server ---
-    socket.on('game_update', renderGameState);
+    socket.on('game_update', (state) => {
+        // Cek apakah ini adalah hasil dari lemparan dadu DAN TIDAK AKAN DIINTERUPSI
+        if (state.last_dice_roll && !state.move_will_be_interrupted) {
+            // Jika ini giliran normal, beri jeda untuk animasi
+            setTimeout(() => {
+                renderGameState(state);
+            }, 1500); // Tunggu 1.5 detik
+            
+        } else {
+            // Jika ini update biasa ATAU akan ada pertanyaan, render langsung
+            renderGameState(state);
+        }
+    });
 
-    // ==========================================================
-    // INI BAGIAN UTAMA YANG DIPERBAIKI
-    // ==========================================================
     socket.on('show_question', (data) => {
+        // ... (kode ini tidak berubah)
         console.log("Menerima pertanyaan:", data);
-
         if (myRole === 'guru') {
-            // Untuk GURU: jangan tampilkan modal, cukup aktifkan tombol dan ubah teks panel
             turnInfo.textContent = `Pertanyaan untuk giliran ini`;
             diceInfo.innerHTML = `<div style="text-align: left; font-size: 14px;"><strong>Soal:</strong> ${data.question}<br><strong>Jawaban:</strong> ${data.answer}</div>`;
             btnCorrect.disabled = false;
             btnIncorrect.disabled = false;
-
-        } else { // Untuk MURID
-            // Untuk MURID: tampilkan modal seperti biasa
+        } else {
             questionText.textContent = data.question;
             answerText.textContent = "(Jawaban ada di layar guru)";
             questionModal.classList.remove('hidden');
