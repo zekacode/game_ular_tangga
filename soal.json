@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "pertanyaan": "Apa bahasa Arab dari 'buku'?",
+        "jawaban": "كتاب (Kitabun)"
+    },
+    {
+        "id": 2,
+        "pertanyaan": "Apa arti dari 'مدرسة (Madrasah)'?",
+        "jawaban": "Sekolah"
+    },
+    {
+        "id": 3,
+        "pertanyaan": "Lengkapi kalimat: أنا ... إلى المدرسة (Saya ... ke sekolah)",
+        "jawaban": "أذهب (Adzhabu - pergi)"
+    }
+]
