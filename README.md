@@ -1,9 +1,3 @@
-Tentu, ini adalah draf **README.md** yang profesional dan lengkap dalam bahasa Inggris. Anda bisa langsung menyalinnya ke repository GitHub Anda.
-
-Saya telah menyertakan bagian-bagian penting seperti fitur, cara instalasi, dan teknologi yang digunakan.
-
-***
-
 # 🐍 Arabic Learning Snakes & Ladders
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue) ![Flask](https://img.shields.io/badge/Flask-2.0%2B-green) ![Socket.IO](https://img.shields.io/badge/Socket.IO-Real--time-orange)
