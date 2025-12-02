@@ -163,6 +163,38 @@ body {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
+/* Styling untuk Tombol Audio */
+.audio-btn {
+    background-color: #1cb0f6; /* Warna biru ala Duolingo */
+    color: white;
+    border: none;
+    border-bottom: 4px solid #1899d6; /* Efek 3D */
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.1s;
+    margin-bottom: 20px;
+}
+
+.audio-btn:active {
+    transform: translateY(4px); /* Efek tombol ditekan */
+    border-bottom: 0px;
+    margin-bottom: 24px; /* Menjaga posisi layout */
+}
+
+.audio-btn .icon {
+    font-size: 24px;
+}
+
+.audio-btn:hover {
+    background-color: #2ebcfc;
+}
+
 @keyframes run-cycle {
     from {
         background-position: 0 0;

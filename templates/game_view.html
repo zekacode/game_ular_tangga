@@ -50,8 +50,23 @@
     <div id="question-modal" class="modal-overlay hidden">
         <div class="modal-content">
             <h2>Pertanyaan!</h2>
-            <p id="question-text">Apa bahasa Arab dari 'buku'?</p>
-            <p><strong>Jawaban:</strong> <span id="answer-text">Kitabun</span></p>
+            
+            <!-- BAGIAN AUDIO BARU -->
+            <div id="audio-wrapper" class="hidden">
+                <!-- Elemen audio asli disembunyikan, tapi tetap ada untuk fungsi -->
+                <audio id="hidden-audio">
+                    <source id="audio-source" src="" type="audio/mpeg">
+                </audio>
+
+                <!-- Tombol Kustom ala Duolingo -->
+                <button id="play-audio-btn" class="audio-btn">
+                    <span class="icon">🔊</span> Dengarkan Suara
+                </button>
+            </div>
+            <!-- AKHIR BAGIAN AUDIO -->
+
+            <p id="question-text">...</p>
+            <p><strong>Jawaban:</strong> <span id="answer-text">...</span></p>
             <small>Guru, silakan verifikasi jawaban murid.</small>
         </div>
     </div>

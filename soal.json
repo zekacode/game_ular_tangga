@@ -1,17 +1,160 @@
 [
     {
         "id": 1,
-        "pertanyaan": "Apa bahasa Arab dari 'buku'?",
-        "jawaban": "كتاب (Kitabun)"
+        "type": "text",
+        "pertanyaan": "Apa bahasa Arab dari 'Buku'?",
+        "jawaban": "كِتَابٌ (Kitaabun)"
     },
     {
         "id": 2,
-        "pertanyaan": "Apa arti dari 'مدرسة (Madrasah)'?",
-        "jawaban": "Sekolah"
+        "type": "audio",
+        "pertanyaan": "Dengarkan audio berikut. Apa arti kata yang diucapkan?",
+        "media": "soal_audio_02.mp3",
+        "jawaban": "Pena (Qalamun / قَلَمٌ)"
     },
     {
         "id": 3,
-        "pertanyaan": "Lengkapi kalimat: أنا ... إلى المدرسة (Saya ... ke sekolah)",
-        "jawaban": "أذهب (Adzhabu - pergi)"
+        "type": "text",
+        "pertanyaan": "Lengkapi kalimat ini (Ini rumah): هَذَا ...",
+        "jawaban": "بَيْتٌ (Baitun)"
+    },
+    {
+        "id": 4,
+        "type": "text",
+        "pertanyaan": "Apa bahasa Arab dari 'Meja'?",
+        "jawaban": "مَكْتَبٌ (Maktabun)"
+    },
+    {
+        "id": 5,
+        "type": "audio",
+        "pertanyaan": "Dengarkan audio berikut. Apa arti kata yang diucapkan?",
+        "media": "soal_audio_05.mp3",
+        "jawaban": "Papan Tulis (Sabbuuratun / سَبُّوْرَةٌ)"
+    },
+    {
+        "id": 6,
+        "type": "text",
+        "pertanyaan": "Lengkapi kalimat perkenalan: ... اِسْمِيْ أَحْمَد (Nama saya Ahmad)",
+        "jawaban": "اِسْمِيْ (Ismii)"
+    },
+    {
+        "id": 7,
+        "type": "text",
+        "pertanyaan": "Apa bahasa Arab dari 'Ayah'?",
+        "jawaban": "أَبٌ (Abun)"
+    },
+    {
+        "id": 8,
+        "type": "audio",
+        "pertanyaan": "Dengarkan audio berikut. Apa arti kata yang diucapkan?",
+        "media": "soal_audio_08.mp3",
+        "jawaban": "Ibu (Ummun / أُمٌّ)"
+    },
+    {
+        "id": 9,
+        "type": "text",
+        "pertanyaan": "Lengkapi kalimat: أَنَا ... (Saya seorang murid laki-laki)",
+        "jawaban": "تِلْمِيْذٌ (Tilmiidzun)"
+    },
+    {
+        "id": 10,
+        "type": "text",
+        "pertanyaan": "Apa bahasa Arab dari angka 'Satu'?",
+        "jawaban": "وَاحِدٌ (Waahidun)"
+    },
+    {
+        "id": 11,
+        "type": "audio",
+        "pertanyaan": "Dengarkan audio berikut. Angka berapakah ini?",
+        "media": "soal_audio_11.mp3",
+        "jawaban": "Lima (Khamsatun / خَمْسَةٌ)"
+    },
+    {
+        "id": 12,
+        "type": "text",
+        "pertanyaan": "Apa arti dari warna 'أَحْمَر' (Ahmar)?",
+        "jawaban": "Merah"
+    },
+    {
+        "id": 13,
+        "type": "text",
+        "pertanyaan": "Lengkapi kalimat sapaan: ... كَيْفَ (Apa kabarmu?)",
+        "jawaban": "حَالُكَ (Haaluka)"
+    },
+    {
+        "id": 14,
+        "type": "text",
+        "pertanyaan": "Apa bahasa Arab dari 'Kepala'?",
+        "jawaban": "رَأْسٌ (Ra'sun)"
+    },
+    {
+        "id": 15,
+        "type": "audio",
+        "pertanyaan": "Dengarkan audio berikut. Anggota tubuh apakah ini?",
+        "media": "soal_audio_15.mp3",
+        "jawaban": "Tangan (Yadun / يَدٌ)"
+    },
+    {
+        "id": 16,
+        "type": "text",
+        "pertanyaan": "Lengkapi kalimat: هَذَا ... (Ini kelas)",
+        "jawaban": "فَصْلٌ (Fashlun)"
+    },
+    {
+        "id": 17,
+        "type": "text",
+        "pertanyaan": "Apa bahasa Arab dari 'Tas'?",
+        "jawaban": "حَقِيْبَةٌ (Haqiibatun)"
+    },
+    {
+        "id": 18,
+        "type": "audio",
+        "pertanyaan": "Dengarkan audio berikut. Apa arti kata yang diucapkan?",
+        "media": "soal_audio_18.mp3",
+        "jawaban": "Sekolah (Madrasatun / مَدْرَسَةٌ)"
+    },
+    {
+        "id": 19,
+        "type": "text",
+        "pertanyaan": "Lengkapi kalimat: أَنَا ... الْقُرْآنَ (Saya membaca Al-Quran)",
+        "jawaban": "أَقْرَأُ (Aqra-u)"
+    },
+    {
+        "id": 20,
+        "type": "text",
+        "pertanyaan": "Apa bahasa Arab dari 'Pintu'?",
+        "jawaban": "بَابٌ (Baabun)"
+    },
+    {
+        "id": 21,
+        "type": "audio",
+        "pertanyaan": "Dengarkan audio berikut. Warna apakah ini?",
+        "media": "soal_audio_21.mp3",
+        "jawaban": "Putih (Abyad / أَبْيَض)"
+    },
+    {
+        "id": 22,
+        "type": "text",
+        "pertanyaan": "Apa arti dari angka 'ثَلَاثَةٌ' (Tsalaatsatun)?",
+        "jawaban": "Tiga"
+    },
+    {
+        "id": 23,
+        "type": "text",
+        "pertanyaan": "Lengkapi kalimat: هَذِهِ ... (Ini Bu Guru)",
+        "jawaban": "مُدَرِّسَةٌ (Mudarrisatun)"
+    },
+    {
+        "id": 24,
+        "type": "text",
+        "pertanyaan": "Apa bahasa Arab dari 'Mata'?",
+        "jawaban": "عَيْنٌ ('Ainun)"
+    },
+    {
+        "id": 25,
+        "type": "audio",
+        "pertanyaan": "Dengarkan audio berikut. Anggota tubuh apakah ini?",
+        "media": "soal_audio_25.mp3",
+        "jawaban": "Kaki (Rijlun / رِجْلٌ)"
     }
 ]

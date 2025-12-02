@@ -11,8 +11,8 @@ socketio = SocketIO(app)
 
 # --- State & Game Logic ---
 game_rooms = {}
-snakes = {16: 6, 47: 26, 49: 11, 56: 53, 62: 19, 64: 60, 87: 24, 93: 73, 95: 75, 98: 78}
-ladders = {2: 38, 3: 14, 4: 31, 5: 42, 6: 84, 7: 44, 51: 67, 71: 91, 80: 100}
+snakes = {16: 7, 59: 17, 63: 19, 67: 30, 87: 24, 93: 69, 95: 75, 99: 77}
+ladders = {9: 27, 18: 37, 25: 54, 28: 51, 56: 64, 68: 88, 76: 97, 79: 100}
 WINNING_POSITION = 100
 with open('soal.json', 'r', encoding='utf-8') as f:
     questions = json.load(f)
@@ -95,7 +95,13 @@ def handle_roll_dice(data):
         }
         # Penting: Kirim 'game_update' lagi agar frontend tahu state berubah menjadi 'question'
         emit('game_update', game, to=room_code) 
-        emit('show_question', {'question': question_data['pertanyaan'], 'answer': question_data['jawaban']}, to=room_code)
+        emit('show_question', {
+            'type': question_data.get('type', 'text'), # Default ke text jika tidak ada
+            'question': question_data['pertanyaan'],
+            'media': question_data.get('media'),       # Bisa None jika soal teks
+            'answer': question_data['jawaban'],
+            'move_type': move_type
+        }, to=room_code)
     else:
         # Jika tidak ada soal, ganti giliran seperti biasa
         if temp_position == WINNING_POSITION:
